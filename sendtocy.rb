@@ -1,14 +1,13 @@
+cyid = "userid"  # ログインID
+cypass = "userpassword"  #　ログインパスワード
+videourl = "videourl"  #　動画アドレス
+channel = "channel"  #　Cytubeチャンネル
+
 require 'selenium-webdriver'
 
 driver = Selenium::WebDriver.for :chrome # ブラウザ起動
 
 driver.navigate.to 'https://cytube.xyz/login' # ログインページ
-
-cyid = "ID"  # ログインID
-cypass = "Password"  #　ログインパスワード
-videourl = "Videourl"  #　動画アドレス
-channel = "channel"  #　Cytubeチャンネル
-
 
 # 表示待機時間
 wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -26,18 +25,21 @@ sleep 1
 
 sleep 3
 
-# 表示待機時間
- wait = Selenium::WebDriver::Wait.new(:timeout => 10)
- wait.until {driver.find_element(:id, 'showmediaurl').displayed?}
-
-# 動画登録フォーム表示ボタン
-driver.find_element(:id, 'showmediaurl').click
-
-sleep 1
-
 # 動画登録
-element = driver.find_element(:id, 'mediaurl')
-element.send_keys videourl
-driver.find_element(:id, 'queue_next').click
+scriptQueue = <<EOS
+const data = parseMediaLink('#{videourl}')
+
+socket.emit('queue', {
+  duration: undefined,
+  pos: "end",
+  temp: true,
+  title: undefined,
+  id: data.id,
+  type: data.type,
+  stime: data.stime
+});
+EOS
+
+driver.execute_script(scriptQueue)
 
 driver.quit # ブラウザ終了
