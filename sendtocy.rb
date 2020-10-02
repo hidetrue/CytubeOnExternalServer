@@ -21,7 +21,7 @@ wait.until {driver.find_element(:xpath, '/html/body/div/section/div/div/form/but
 
 sleep 1
 
- driver.navigate.to 'https://cytube.xyz/r/dev_test' # 動画ページ移動
+ driver.navigate.to 'cytubeURL' # 動画ページ移動
 
 sleep 3
 
