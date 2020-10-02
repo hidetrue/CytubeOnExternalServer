@@ -4,9 +4,9 @@ driver = Selenium::WebDriver.for :chrome # ブラウザ起動
 
 driver.navigate.to 'https://cytube.xyz/login' # ログインページ
 
-ctvid = "yamapa"  # ログインID
-ctvpass = "0nptmo"  #　ログインパスワード
-videourl = "https://www.youtube.com/watch?v=uNAgU8cjPlE"  #　動画アドレス
+ctvid = "id"  # ログインID
+ctvpass = "Password"  #　ログインパスワード
+videourl = "VideoURL"  #　動画アドレス
 
 
 # 表示待機時間
