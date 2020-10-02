@@ -1,6 +1,6 @@
 cyid = "userid"  # ログインID
 cypass = "userpassword"  #　ログインパスワード
-videourl = "videourl"  #　動画アドレス
+videoarray = video_array #動画配列データ
 channel = "channel"  #　Cytubeチャンネル
 
 require 'selenium-webdriver'
@@ -26,6 +26,9 @@ sleep 1
 sleep 3
 
 # 動画登録
+
+videoarray.each do |videourl|
+  
 scriptQueue = <<EOS
 const data = parseMediaLink('#{videourl}')
 
@@ -41,5 +44,6 @@ socket.emit('queue', {
 EOS
 
 driver.execute_script(scriptQueue)
+end
 
 driver.quit # ブラウザ終了
