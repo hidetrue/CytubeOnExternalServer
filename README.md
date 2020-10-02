@@ -1,0 +1,2 @@
+# CytubeOnExternalServer
+CTVのために作ってる、Cytubeを外部サーバーからリスト登録する仕組みのためのリポジトリです
