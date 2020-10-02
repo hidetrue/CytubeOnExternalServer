@@ -4,8 +4,8 @@ driver = Selenium::WebDriver.for :chrome # ブラウザ起動
 
 driver.navigate.to 'https://cytube.xyz/login' # ログインページ
 
-ctvid = "ID"  # ログインID
-ctvpass = "Password"  #　ログインパスワード
+cyid = "ID"  # ログインID
+cypass = "Password"  #　ログインパスワード
 videourl = "Videourl"  #　動画アドレス
 channel = "channel"  #　Cytubeチャンネル
 
@@ -16,8 +16,8 @@ wait.until {driver.find_element(:xpath, '/html/body/div/section/div/div/form/but
 
 # 入力、ログインボタンクリック
 
- driver.find_element(:xpath, '/html/body/div/section/div/div/form/div[1]/input').send_keys ctvid
- driver.find_element(:xpath, '/html/body/div/section/div/div/form/div[2]/input').send_keys ctvpass
+ driver.find_element(:xpath, '/html/body/div/section/div/div/form/div[1]/input').send_keys cyid
+ driver.find_element(:xpath, '/html/body/div/section/div/div/form/div[2]/input').send_keys cypass
  driver.find_element(:xpath, '/html/body/div/section/div/div/form/button').click
 
 sleep 1
